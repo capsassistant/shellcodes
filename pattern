@@ -1,3 +1,25 @@
+LoginID#Passwd#DateOfBirth#Location#Mobile#Email
+Rajaravi#ETA@123#18-09-1993#Delhi#8888888888#raja.ravi@infosys.com
+Rajesh#Infy123#16-08-1990#Chennai#9999999999#Rajesh@infosys.com
+Raktim#123Infy#10-08-1992#Bangalore#8989898998#Raktim_talukdar@infosys.com;
+Aravind#Dell123#12-08-1993#Hyderabad#7878787890#Aravind.raghavan@infosys.com
+Sankavi#InfyDell#14-09-1992#Mumbai#7777777777#vidya@infosys.com
+------------------------------------------------------------------------------------
+
+a.Display all the login ids along with the terminal numbers of users who have logged into the server
+
+b.Given a login id, count the number of times that particular user has logged in
+
+c.Display the count of directories in your present working directory
+
+
+d.Display all the lines in a file which ends with a semicolon
+$ grep ';$' pattern1
+
+e.Count the number of lines in a file which do not end with a semicolon.
+$ grep -v ';$' pattern1| wc -l
+
+
 EmpID:Name:Designation:UnitName:Location:DateofJoining:Salary
 1001:Thomson:SE:IVS:Mumbai:10-Feb-1999:60000
 1002:Johnson:TE::Bangalore:18-Jun-2000:50000
