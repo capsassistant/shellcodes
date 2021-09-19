@@ -19,15 +19,27 @@ $ grep ';$' pattern1
 e.Count the number of lines in a file which do not end with a semicolon.
 $ grep -v ';$' pattern1| wc -l
 
+************************************************************************************************************
+employeee:
+EmpNo#Email#Name#JobLevel#Experience
+641357#Amrit_Mohanty#Amrit Mohanty#3#2
+678522#Puneet_Mishra#Puneet Mishra#3#1
+670242#Vikas_Bharti#Vikas Bharti#3#1.5
+661822#Aravind_Raghavan#Aravind Raghavan#3#1.5
+706209#Sankavi.Boopathy#Sankavi Boopathy#3#0.5
+706452#Raja.Ravi#Raja Ravi#3#0.5
 
-EmpID:Name:Designation:UnitName:Location:DateofJoining:Salary
-1001:Thomson:SE:IVS:Mumbai:10-Feb-1999:60000
-1002:Johnson:TE::Bangalore:18-Jun-2000:50000
-1003:Jackson:DM:IMS:Hyderabad:23-Apr-1985:90000
-1004:BobGL::ETA:Mumbai:05-Jan-2004:55000
-1005:Alice:PA:::26-Aug-2014:25000
-1006:LilySE:IVS::Bangalore:17-Dec-2015:40000
-1007:Kirsten:PM:IMS:Mumbai:26-Aug-2014:45000
-1004:BobGL::ETA:Mumbai:05-Jan-2021:55000
+
+Write a command to display the employee with the highest experience in years (last column)
+$ grep ".*#` cut -d "#" -f5 employee|sort -n|tail -1`" employee
+661822#Aravind_Raghavan#Aravind Raghavan#3#10
+661777#Aravind_Sharma#Aravind Sharma#2#10
+
+
+Write a command to display all the employees whose first name have more than 6 characters
+
+
+Write a command to display two employees with least years of experience
+Write a command to display all repetitive years of experience values
 
 
