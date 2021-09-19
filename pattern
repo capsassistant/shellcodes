@@ -24,22 +24,39 @@ employeee:
 EmpNo#Email#Name#JobLevel#Experience
 641357#Amrit_Mohanty#Amrit Mohanty#3#2
 678522#Puneet_Mishra#Puneet Mishra#3#1
-670242#Vikas_Bharti#Vikas Bharti#3#1.5
-661822#Aravind_Raghavan#Aravind Raghavan#3#1.5
-706209#Sankavi.Boopathy#Sankavi Boopathy#3#0.5
-706452#Raja.Ravi#Raja Ravi#3#0.5
-
-
-Write a command to display the employee with the highest experience in years (last column)
-$ grep ".*#` cut -d "#" -f5 employee|sort -n|tail -1`" employee
+670242#Vikas_Bharti#Vikas Bharti#3#6
 661822#Aravind_Raghavan#Aravind Raghavan#3#10
+706209#Sankavi.Boopathy#Sankavi Boopathy#3#4
+706452#Raja.Ravi#Raja Ravi#3#9
 661777#Aravind_Sharma#Aravind Sharma#2#10
 
 
+1.
+Write a command to display the employee with the highest experience in years (last column)
+$ grep ".*#` cut -d "#" -f5 employee|sort -n|uniq|tail -1`" employee
+----------------
+661822#Aravind_Raghavan#Aravind Raghavan#3#10
+661777#Aravind_Sharma#Aravind Sharma#2#10
+
+2.
 Write a command to display all the employees whose first name have more than 6 characters
+[tr1159773@MYSUL01K sep18]$ cut -d "#" -f3  employee| egrep -i '^[A-Z]{6,}'
+Puneet Mishra
+Aravind Raghavan
+Sankavi Boopathy
+Aravind Sharma
+
+$ grep ".*# `cut -d "#" -f3  employee| egrep -i '^[A-Z]{6,}'`" employee
+661822#Aravind_Raghavan#Aravind Raghavan#3#10
+706209#Sankavi.Boopathy#Sankavi Boopathy#3#4
+661777#Aravind_Sharma#Aravind Sharma#2#10
 
 
+3.
 Write a command to display two employees with least years of experience
+
+
+4.
 Write a command to display all repetitive years of experience values
 
 
