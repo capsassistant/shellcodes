@@ -121,7 +121,7 @@ Write a command to get all marks in 90s range scored in FA2
 3.
 Write a command to display the employee numbers who have same marks in FA1
 
-cut -d'#' -f1,2 marks.txt | tail -6 | sort -nk2 -t'#' | uniq -s7 -D
+cut -d'#' -f1,2 mru | tail -6 | sort -nk2 -t'#' | uniq -s7 -D
 
 
 
@@ -169,7 +169,7 @@ Display the employee details - Employee Number and FA2 marks who has the 3rd max
 661822#94
 [tr1159773@MYSUL01K sep18]$ sort -nk3 -t'#' mru -r|head -3 |cut -d '#' -f1,3| tail -1
 661822#94
-[tr1159773@MYSUL01K sep18]$
+[tr1159773@MYSUL01K sep18]$|
 
 
 
@@ -188,14 +188,137 @@ EmpID:Name:Designation:UnitName:Location:DateofJoining:Salary
 
 
 List only the employee names working in unit "ETA"
+[tr1159773@MYSUL01K sep18]$ grep -i "eta" emp
+1004:BobGL::ETA:Mumbai:05-Jan-2004:55000
+1004:BobGL::ETA:Mumbai:05-Jan-2021:55000
+
+
 List only the employee IDs and Names working as "SE"
+[tr1159773@MYSUL01K sep18]$ grep -i ":SE:" emp| cut -d ":" -f1,3
+1001:SE
+
+
 List all the employee IDs who have joined in year 2018
+[tr1159773@MYSUL01K sep18]$ grep -i "2018:" emp| cut -d ":" -f1
+[tr1159773@MYSUL01K sep18]$
+
+
 List all the employee IDs whose Unit name begins or ends with 'S'
+
+[tr1159773@MYSUL01K sep18]$ cut -d':' -f1,4 emp1 |egrep -i "S$|:S"
+1001:SIVS
+1003:IMS
+1005:Sfe
+1007:IMS
+[tr1159773@MYSUL01K sep18]$ cut -d':' -f1,4 emp1 |egrep -i "S$|:S"| cut -d':' -f1
+1001
+1003
+1005
+1007
+
+
+
 Display the count of employees working for 'IMS' unit
+
+[tr1159773@MYSUL01K sep18]$ grep -ic "IMS" emp
+2
+
+
 Display the Employee details of all those working in a location which has 'a' in its location name
+
+[tr1159773@MYSUL01K sep18]$ grep -v "Name" emp|egrep "`cut -d':' -f5 emp|grep 'a'`"
+1001:Thomson:SE:IVS:Mumbai:10-Feb-1999:60000
+1002:Johnson:TE::Bangalore:18-Jun-2000:50000
+1003:Jackson:DM:IMS:Hyderabad:23-Apr-1985:90000
+1004:BobGL::ETA:Mumbai:05-Jan-2004:55000
+1006:LilySE:IVS::Bangalore:17-Dec-2015:40000
+1007:Kirsten:PM:IMS:Mumbai:26-Aug-2014:45000
+1004:BobGL::ETA:Mumbai:05-Jan-2021:55000
+
+
 Display the Employee details of all those working in a location which ends with 'ore' in its location name
+[tr1159773@MYSUL01K sep18]$ grep -v "Name" emp|egrep "`cut -d':' -f5 emp|grep 'ore$ '`"
+1002:Johnson:TE::Bangalore:18-Jun-2000:50000
+1006:LilySE:IVS::Bangalore:17-Dec-2015:40000
+
+
 Count the number of blank records in the file
+[tr1159773@MYSUL01K sep18]$ grep "::" -c emp
+5
+
+
 List only the employee names for whom the unit details are blank
+[tr1159773@MYSUL01K sep18]$ grep '.*:.*:.*::' emp |cut -d':' -f2
+Johnson
+Alice
+LilySE
+[tr1159773@MYSUL01K sep18]$ cut -d':' -f2,4 emp| grep ":$" | cut -d':' -f1
+Johnson
+Alice
+LilySE
+
+
+
+[tr1159773@MYSUL01K sep18]$ cut -d':' -f2,4 emp| grep ":$"
+Johnson:
+Alice:
+LilySE:
+[tr1159773@MYSUL01K sep18]$ cut -d':' -f2,4 emp
+Name:UnitName
+Thomson:IVS
+Johnson:
+Jackson:IMS
+BobGL:ETA
+Alice:
+LilySE:
+Kirsten:IMS
+BobGL:ETA
+[tr1159773@MYSUL01K sep18]$
+
+
 List employee IDs and designation for employees who are not working as "PA"
+[tr1159773@MYSUL01K sep18]$ grep -v '.*:.*:PA:' emp
+EmpID:Name:Designation:UnitName:Location:DateofJoining:Salary
+1001:Thomson:SE:IVS:Mumbai:10-Feb-1999:60000
+1002:Johnson:TE::Bangalore:18-Jun-2000:50000
+1003:Jackson:DM:IMS:Hyderabad:23-Apr-1985:90000
+1004:BobGL::ETA:Mumbai:05-Jan-2004:55000
+1006:LilySE:IVS::Bangalore:17-Dec-2015:40000
+1007:Kirsten:PM:IMS:Mumbai:26-Aug-2014:45000
+1004:BobGL::ETA:Mumbai:05-Jan-2021:55000
+
+[tr1159773@MYSUL01K sep18]$ grep -v '.*:.*:PA:' emp |cut -d ":" -f1,3
+EmpID:Designation
+1001:SE
+1002:TE
+1003:DM
+1004:
+1006:IVS
+1007:PM
+1004:
+
+
 Count all the employees working in 'Mumbai' location
+[tr1159773@MYSUL01K sep18]$ grep -ic "mumbai" emp
+4
+
 Display all employees who have joined in current year
+[tr1159773@MYSUL01K sep18]$ grep `date +%Y` emp
+1004:BobGL::ETA:Mumbai:05-Jan-2021:55000
+
+
+
+
+
+EmpID:Name:Designation:UnitName:Location:DateofJoining:Salary
+1001:Thomson:SE:SIVS:Mumbai:10-Feb-1999:60000
+1002:Johnson:TE::Bangalore:18-Jun-2000:50000
+1003:Jackson:DM:IMS:Hyderabad:23-Apr-1985:90000
+1004:BobGL::ETA:Mumbai:05-Jan-2004:55000
+1005:Alice:PA:Sfe::26-Aug-2014:25000
+1006:LilySE:IVS::Bangalore:17-Dec-2015:40000
+1007:Kirsten:PM:IMS:Mumbai:26-Aug-2014:45000
+1004:BobGL::ETA:Mumbai:05-Jan-2021:55000
+
+
+
