@@ -52,11 +52,23 @@ $ grep ".*# `cut -d "#" -f3  employee| egrep -i '^[A-Z]{6,}'`" employee
 661777#Aravind_Sharma#Aravind Sharma#2#10
 
 
+[tr1159773@MYSUL01K sep18]$ egrep  '#[A-Za-z]{7,} ' employee 
+
+
 3.
+EmpNo#Email#Name#JobLevel#Experience
+641357#Amrit_Mohanty#Amrit Mohanty#3#610
+670242#Vikas_Bharti#Vikas Bharti#3#2
+661822#Aravind_Raghavan#Aravind Raghavan#3#10
+706209#Sankavi.Boopathy#Sankavi Boopathy#3#4
+706452#Raja.Ravi#Raja Ravi#3#9
+678522#Puneet_Mishra#Puneet Mishra#3#1
+661777#Aravind_Sharma#Aravind Sharma#2#10
+
 Write a command to display two employees with least years of experience
 
 
 4.
 Write a command to display all repetitive years of experience values
-
+uniq -d
 
