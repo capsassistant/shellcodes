@@ -66,7 +66,7 @@ EmpNo#Email#Name#JobLevel#Experience
 661777#Aravind_Sharma#Aravind Sharma#2#10
 
 Write a command to display two employees with least years of experience
-
+sort -nk5 -t'#' Employee.txt | tail -3 | head -2 
 
 4.
 Write a command to display all repetitive years of experience values
