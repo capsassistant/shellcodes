@@ -130,6 +130,21 @@ cut -d'#' -f1,2 marks.txt | tail -6 | sort -nk2 -t'#' | uniq -s7 -D
 iV)
 Display the employee numbers who got maximum marks in FA1 and FA3
 
+[tr1159773@MYSUL01K sep18]$ sort -nk2 -t'#' mru -r| sort -nk4 -t'#' mru -r
+670242#89#97#99
+678522#89#98#92
+661822#78#94#91
+641357#67#75#78
+706209#67#34#65
+[tr1159773@MYSUL01K sep18]$ sort -nk2 -t'#' mru -r| sort -nk4 -t'#' mru -r |head -1
+670242#89#97#99
+[tr1159773@MYSUL01K sep18]$ sort -nk2 -t'#' mru -r| sort -nk4 -t'#' mru -r |head -1 | cut -d '#' -f1
+670242
+[tr1159773@MYSUL01K sep18]$
+
+
+
+
 Display the employee details - Employee Number and FA1 marks who has the least marks in FA1
 [tr1159773@MYSUL01K sep18]$ grep "#`cut -d'#' -f2 mru | sort -nk2 -t'#' |head -1`" mru | cut -d"#" -f1,2
 641357#67
@@ -142,3 +157,45 @@ egrep ".*#` sort -nk2 -t'#' mru | cut -d'#' -f2  |  uniq -D`" mru
 
 Display the employee details - Employee Number and FA2 marks who has the 3rd maximum marks in FA2
 
+[tr1159773@MYSUL01K sep18]$ sort -nk3 -t'#' mru -r
+678522#89#98#92
+670242#89#97#99
+661822#78#94#91
+641357#67#75#78
+706209#67#34#65
+[tr1159773@MYSUL01K sep18]$ sort -nk3 -t'#' mru -r|head -3 |cut -d '#' -f1,3
+678522#98
+670242#97
+661822#94
+[tr1159773@MYSUL01K sep18]$ sort -nk3 -t'#' mru -r|head -3 |cut -d '#' -f1,3| tail -1
+661822#94
+[tr1159773@MYSUL01K sep18]$
+
+
+
+
+
+V)
+EmpID:Name:Designation:UnitName:Location:DateofJoining:Salary
+1001:Thomson:SE:IVS:Mumbai:10-Feb-1999:60000
+1002:Johnson:TE::Bangalore:18-Jun-2000:50000
+1003:Jackson:DM:IMS:Hyderabad:23-Apr-1985:90000
+1004:BobGL::ETA:Mumbai:05-Jan-2004:55000
+1005:Alice:PA:::26-Aug-2014:25000
+1006:LilySE:IVS::Bangalore:17-Dec-2015:40000
+1007:Kirsten:PM:IMS:Mumbai:26-Aug-2014:45000
+1004:BobGL::ETA:Mumbai:05-Jan-2021:55000
+
+
+List only the employee names working in unit "ETA"
+List only the employee IDs and Names working as "SE"
+List all the employee IDs who have joined in year 2018
+List all the employee IDs whose Unit name begins or ends with 'S'
+Display the count of employees working for 'IMS' unit
+Display the Employee details of all those working in a location which has 'a' in its location name
+Display the Employee details of all those working in a location which ends with 'ore' in its location name
+Count the number of blank records in the file
+List only the employee names for whom the unit details are blank
+List employee IDs and designation for employees who are not working as "PA"
+Count all the employees working in 'Mumbai' location
+Display all employees who have joined in current year
