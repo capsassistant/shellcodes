@@ -138,7 +138,7 @@ Display the employee details - Employee Number and FA1 marks who has the least m
 
 egrep ".*#`cut -d'#' -f2 mru | sort -nk2 -t'#' |  uniq -D`" mru
 
-
+egrep ".*#` sort -nk2 -t'#' mru | cut -d'#' -f2  |  uniq -D`" mru
 
 Display the employee details - Employee Number and FA2 marks who has the 3rd maximum marks in FA2
 
