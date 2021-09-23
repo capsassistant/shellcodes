@@ -121,5 +121,5 @@ Write a command to get all marks in 90s range scored in FA2
 3.
 Write a command to display the employee numbers who have same marks in FA1
 
-
+cut -d'#' -f1,2 marks.txt | tail -6 | sort -nk2 -t'#' | uniq -s7 -D
 
