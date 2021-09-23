@@ -123,3 +123,22 @@ Write a command to display the employee numbers who have same marks in FA1
 
 cut -d'#' -f1,2 marks.txt | tail -6 | sort -nk2 -t'#' | uniq -s7 -D
 
+
+
+
+
+iV)
+Display the employee numbers who got maximum marks in FA1 and FA3
+
+Display the employee details - Employee Number and FA1 marks who has the least marks in FA1
+[tr1159773@MYSUL01K sep18]$ grep "#`cut -d'#' -f2 mru | sort -nk2 -t'#' |head -1`" mru | cut -d"#" -f1,2
+641357#67
+706209#67
+
+
+egrep ".*#`cut -d'#' -f2 mru | sort -nk2 -t'#' |  uniq -D`" mru
+
+
+
+Display the employee details - Employee Number and FA2 marks who has the 3rd maximum marks in FA2
+
