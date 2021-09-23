@@ -89,7 +89,37 @@ uniq -d
 670242#Vikas_Bharti#Vikas Bharti#3#2
 
 
+III) marks
+EmpNo#FA1#FA2#FA3
+641357#67#75#78
+678522#89#98#92
+670242#89#97#99
+661822#78#94#91
+706209#67#34#65
+706452#80#70#68
 
+1.
+Write a command to display two least marks in FA2
+
+[tr1159773@MYSUL01K sep18]$ sort -t "#" -nk3 marks| head -3|tail -2
+641357#67#75#78
+661822#78#94#91
+
+2.
+Write a command to get all marks in 80s range scored in FA2
+[tr1159773@MYSUL01K sep18]$ grep "#.*#8.#" mru
+[tr1159773@MYSUL01K sep18]$
+
+Write a command to get all marks in 90s range scored in FA2
+[tr1159773@MYSUL01K sep18]$ grep "#.*#9.#" mru
+678522#89#98#92
+670242#89#97#99
+661822#78#94#91
+
+
+
+3.
+Write a command to display the employee numbers who have same marks in FA1
 
 
 
