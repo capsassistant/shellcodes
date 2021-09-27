@@ -1,0 +1,18 @@
+
+#Question_1
+ps -U root -u root | head -6 |tail -5
+
+
+
+#Question_2
+fg %2
+
+
+#Question_3
+cpio -idv < ../all_files_backup.cpio
+
+
+
+
+#Question_4
+cd ../../Module2/Submodule1/Sample
