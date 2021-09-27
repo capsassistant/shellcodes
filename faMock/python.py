@@ -1,3 +1,4 @@
+        def check_register(input_string):
         #remove the pass and write your logic here
         #pass
         output_string = 'X'
