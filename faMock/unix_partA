@@ -1,0 +1,130 @@
+#function_1
+validate_passenger_name()
+{
+ #Remove colon and write your logic
+        passenger_name=$1
+        if [[ ! -z  "$1" ]]
+        then
+                if [[ $1 =~ [a-zA-Z]+$ ]]
+                then
+                        return 1
+                else
+                        return 2
+                fi
+        else
+                return 2
+        fi
+}
+#function_2
+validate_source_destination()
+{
+ #Remove colon and write your logic
+        source_city=$1
+        destination_city=$2
+        if [[ $1 =~ ^[A-Z][a-z]+$ && $2 =~ ^[A-Z][a-z]+$ ]]
+        then
+                if [[ $1 = $2 ]]
+                then
+                        return 2
+                else
+                        return 1
+                fi
+        else
+                return 3
+        fi
+
+
+}
+#function_3
+auto_generate()
+{
+ #Remove colon and write your logic
+        ticket_id=$1
+        c=`cat ticket.txt|wc -l`
+        if [[ $c -gt 0 ]]
+        then
+                ticket_id=`expr 101 + $c`
+        else
+                ticket_id=101
+        fi
+        return $ticket_id
+}
+
+
+
+#function_4
+book_ticket()
+{
+ #Remove colon and write your logic
+        passenger_name=$1
+        source_city=$2
+        destination_city=$3
+        validate_passenger_name $1
+        if [[ $? == 1 ]]
+        then
+                validate_source_destination $2 $3
+                if [[ $? == 1 ]]
+                then
+                        auto_generate
+                        t=$?
+                        ti=$(echo T$t)
+                        echo $ti:$1:$2:$3 >> ticket.txt
+                        return 4
+                else
+                        return 5
+                fi
+        else
+                return 5
+        fi
+
+}
+#function_5
+cancel_ticket()
+{
+ #Remove colon and write your logic
+        ticket_id=$1
+        if grep -q "^$1" ticket.txt
+        then
+                sed -i "/$1/d" ticket.txt
+                return 6
+        else
+                return 7
+        fi
+}
+#function_6
+menu()
+{
+ #Remove colon and write your logic
+        if [ $1 -eq 1 ]
+        then
+         read -p "Enter passenger name: " passenger_name
+         read -p "Enter source city: " source_city
+         read -p "Enter destination city: " destination_city
+         read -p "Enter ticket ID: " ticket_id
+        book_ticket $passenger_name $source_city $destination_city
+        elif [ $1 -eq 2 ]
+        then
+                cancel_ticket $ticket_id
+        elif [ $1 -eq 3 ]
+        then
+                exit 8
+        else
+                return 9
+        fi
+
+}
+#function_7
+display()
+{
+        echo "-----------------------------------------"
+        echo "Welcome To Bus Ticket Reservation System"
+        echo "-----------------------------------------"
+        echo "1) Book Ticket "
+        echo "2) Cancel Ticket "
+        echo "3) Exit "
+        echo "Select your choice : "
+        read choice
+        menu "$choice"
+        display
+}
+display
