@@ -1,0 +1,90 @@
+[9:02 pm, 01/10/2021] Nik Cell No: HOTEL_NAME
+
+varchar(50)
+
+HOTEL EMAIL
+
+HOTEL PHONE
+
+varchar(50)
+
+bigint(20)
+
+HOTEL ADDRESS
+
+varchar(250)
+
+HOTEL CITY
+
+varchar(250)
+
+HOTEL_IMAGE
+
+varchar(250)
+
+varchar(250)
+
+HOTEL ROOM_IMAGE
+
+HOTEL_AMENITIES
+
+varchar(250)
+
+HOTEL STARS
+
+int(11)
+
+HOTEL RATINGS_AVG
+
+decimal(2,1)
+
+HOTEL PCOMMENTS
+
+TEXT
+
+HOTEL NCOMMENTS
+
+TEXT
+
+HOTEL DESCRIPTION
+
+TEXT
+[9:03 pm, 01/10/2021] Nik Cell No: BOOKING ID
+
+int(11)
+
+NO
+
+BOOKING_ROOM_ID
+
+int(11)
+
+NO
+
+BOOKING_USER_EMAIL
+
+varchar(50)
+
+BOOKING_CHECKIN
+
+date
+
+BOOKING_CHECKOUT
+
+date
+
+BOOKING ROOM_PRICE
+
+int(11)
+
+BOOKING_ROOM_RATING
+
+int(11)
+
+BOOKING ROOM___PCOMMENTS
+
+varchar(250)
+
+BOOKING ROOM___NCOMMENTS
+
+varchar(250)
