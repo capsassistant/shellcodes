@@ -28,35 +28,40 @@ wallet 	decimal(6,2) Default 0
 
 CREATE TABLE payment_details(
 payment_id	varchar(10)	Primary Key ,
-booking_id	varchar(10)	Not Null references booking_details(booking_id),
+booking_id	varchar(10)	Not Null ,
 journey_duration	int	Not Null,
 waiting_duration	int	Not Null Default 0,
-coupon_code	varchar(50)	references coupon_details(coupon_code),
+coupon_code	varchar(50)	,
 fare	decimal(6,2) Not Null Default 0 ,
 payment_type	enum(‘cash’, ‘wallet’, ‘upi’ )	Not Null  Default ‘wallet’,
-driver_rating	float	
-feedback	text	
-)ENGINE=InnoDB;
+driver_rating	float,
+feedback	text,
+foreign key(booking_id) references booking_details(booking_id),
+foreign key(coupon_code)references coupon_details(coupon_code)
+)
+ENGINE=InnoDB;
 
 
 CREATE TABLE booking_details(
-booking_id	varchar(10)	Primary Key
-customer_id	int	Not Null references customer_details(customer_id),
-driver_id	int	"Not Null references driver_details(driver_id) ,
-date_of_booking	timestamp	Not Null Default current_timestamp,
+booking_id	varchar(10)	Primary Key,
+customer_id	int	Not Null ,
+driver_id	int	Not Null,
+date_of_booking	timestamp Not Null Default current_timestamp,
 source	varchar(50)	Not Null,
 destination	varchar(50)	Not Null,
 type_of_travel	enum(‘pool’, ‘solo’)	Not Null,
-number_of_persons	int	,
-booking_status	enum (‘waiting’, ‘travelling’, ‘completed’, ‘cancelled’) Not Null Default ‘waiting’
+number_of_persons	int,
+booking_status	enum (‘waiting’, ‘travelling’, ‘completed’, ‘cancelled’) Not Null Default ‘waiting’,
+foreign key(customer_id)references customer_details(customer_id)
+foreign key(driver_id)references driver_details(driver_id)
 )ENGINE=InnoDB;
 
 
 CREATE TABLE coupon_details(
-coupon_code	varchar(50)	Primary Key
-expiry_date	date	Not Null
-description	text	
-discount_percentage	float	Not Null
+coupon_code	varchar(50)	Primary Key,
+expiry_date	date	Not Null,
+description	text,	
+discount_percentage	float	Not Null,
 )ENGINE=InnoDB;
 
 
