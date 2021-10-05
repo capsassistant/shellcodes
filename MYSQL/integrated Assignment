@@ -68,3 +68,25 @@ discount_percentage	float	Not Null,
 
 
 --------------------------------------------------------------------
+
+BK101	1	1006	current_timestamp - 8760 hours	Yonkers	Brooklyn	pool	1	completed
+BK102	2	1006	current_timestamp - 8001 hours	Yonkers	Brooklyn	pool	1	completed
+BK103	3	1006	current_timestamp - 7665 hours	Yonkers 	Brooklyn	pool	2	completed
+BK104	3	1001	current_timestamp - 438000 minutes	Manhattan	Queens	solo	NULL	cancelled
+BK105	5	1003	current_timestamp - 394300 minutes	Queens	Elizabeth	solo	3	completed
+BK106	5	1004	current_timestamp - 306199 minutes	Elizabeth	Queens	solo	1	completed
+BK107	6	1005	current_timestamp - 262000 minutes	Elizabeth	Brooklyn	solo	NULL	cancelled
+BK108	3	1004	current_timestamp - 175200 minutes	Elizabeth	Huntington	solo	NULL	completed
+BK109	4	1003	current_timestamp - 100000 minutes	Huntington	Woodrow	solo	NULL	cancelled
+BK110	4	1006	current_timestamp - 80000 minutes	Woodrow	Manhattan	solo	NULL	cancelled
+BK111	1	1007	current_timestamp - 40000 minutes	Queens	Newark	solo	NULL	completed
+BK112	1	1008	current_timestamp - 262800 seconds	Huntington	Woodrow	solo	NULL	completed
+BK113	5	1010	current_timestamp - 720 seconds	Huntington	Manhattan	solo	NULL	waiting
+BK114	4	1009	current_timestamp - 360 seconds	Brooklyn	Yonkers	pool	2	travelling
+BK115	6	1009	current_timestamp	Brooklyn	Yonkers	pool	4	travelling
+
+
+
+
+subtime(current_timestamp(),"8:0:0");
+
